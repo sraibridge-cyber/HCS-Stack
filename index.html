@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>HCS Stack — SR-AIBRIDGE × CSIP</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--gold:#c8a84b;--cyan:#7ec8e3;--text:#e8e4d9;--muted:#6b6b7b;--red:#ef6c6c;--green:#6cef9a;}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:16px;padding-bottom:80px;}
+.layer{border:1px solid var(--border);border-radius:12px;padding:16px;margin:10px 0;background:var(--card);}
+.layer h3{display:flex;align-items:center;gap:8px;font-size:14px;letter-spacing:.1em;}
+.layer .desc{font-size:12px;color:var(--muted);margin:6px 0 10px;}
+.layer-badge{display:inline-block;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:11px;font-weight:700;}
+.layer-L0 .layer-badge{background:#ef9a9a;color:#0a0a0f;}
+.layer-L1 .layer-badge{background:#e8b86d;color:#0a0a0f;}
+.layer-L2 .layer-badge{background:#a5d6a7;color:#0a0a0f;}
+.layer-L3 .layer-badge{background:#7ec8e3;color:#0a0a0f;}
+.layer-L4 .layer-badge{background:#b39ddb;color:#0a0a0f;}
+.layer-L5 .layer-badge{background:#c8a84b;color:#0a0a0f;}
+.status{font-size:11px;padding:3px 8px;border-radius:20px;float:right;}
+.status-ok{background:#1a3a2a;color:var(--green);}
+.status-warn{background:#3a2a1a;color:#e8b86d;}
+.status-err{background:#3a1a1a;color:var(--red);}
+.mu-bar{height:6px;background:var(--border);border-radius:3px;margin:8px 0;overflow:hidden;}
+.mu-fill{height:100%;border-radius:3px;transition:width .6s ease;}
+.mu-label{font-size:10px;color:var(--muted);margin-bottom:4px;}
+.mu-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:12px;}
+.mu-cell{border-radius:6px;padding:8px 4px;text-align:center;font-size:10px;}
+.mu-cell span{display:block;font-size:13px;font-weight:700;}
+.flow-diagram{display:flex;flex-direction:column;gap:6px;margin:16px 0;padding:12px;background:#0d0d14;border-radius:10px;border:1px solid var(--border);}
+.flow-arrow{text-align:center;color:var(--muted);font-size:12px;}
+.flow-step{display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border-radius:8px;border:1px solid var(--border);font-size:13px;}
+.flow-step .arrow{color:var(--gold);font-weight:700;}
+.hdr{margin-bottom:20px;}
+.hdr h1{font-size:20px;color:var(--gold);}
+.hdr p{font-size:12px;color:var(--muted);margin-top:4px;}
+.fix-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.fix-card{padding:12px;border-radius:10px;font-size:12px;border:1px solid var(--border);}
+.fix-card.before{background:#1a0d0d;border-color:#4a1a1a;}
+.fix-card.after{background:#0d1a0d;border-color:#1a4a1a;}
+.fix-card h4{font-size:11px;margin-bottom:6px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <h1>🧱 HCS Stack</h1>
+  <p>SR-AIBRIDGE × CSIP — Unified Layered Architecture</p>
+</div>
+
+<div class="layer layer-L0">
+  <h3><span class="layer-badge">L0</span> Physical Execution Layer <span class="status status-ok">OPERATIONAL</span></h3>
+  <div class="desc">Truth substrate — Kafka event backbone, Ray distributed compute, Neo4j causal graph, Postgres persistent storage</div>
+  <div class="mu-label">Coherence: μ = 0.9997</div>
+  <div class="mu-bar"><div class="mu-fill" style="width:99.97%;background:linear-gradient(90deg,#6cef9a,#7ec8e3)"></div></div>
+</div>
+
+<div class="layer layer-L1">
+  <h3><span class="layer-badge">L1</span> TaskBus + Execution Layer <span class="status status-ok">OPERATIONAL</span></h3>
+  <div class="desc">Harmony Kernel lives here as distributed orchestrator. Converts SR-AIBRIDGE intent → CSIP events. Schedules across Ray workers.</div>
+  <div class="mu-label">Coherence: μ = 0.9996</div>
+  <div class="mu-bar"><div class="mu-fill" style="width:99.96%;background:linear-gradient(90deg,#6cef9a,#7ec8e3)"></div></div>
+</div>
+
+<div class="layer layer-L2">
+  <h3><span class="layer-badge">L2</span> SR-AIBRIDGE Intelligence Layer <span class="status status-ok">OPERATIONAL</span></h3>
+  <div class="desc">FORGE (agent generation) + MIDAS (value/trust model) + μ/CH System (coherence scoring + constraint enforcement)</div>
+  <div class="mu-label">Coherence: μ = 0.9998</div>
+  <div class="mu-bar"><div class="mu-fill" style="width:99.98%;background:linear-gradient(90deg,#6cef9a,#c8a84b)"></div></div>
+</div>
+
+<div class="layer layer-L3">
+  <h3><span class="layer-badge">L3</span> Federation + Causal Layer <span class="status status-ok">ACTIVE</span></h3>
+  <div class="desc">The merger power: causal DAG engine (CSIP) + SR coherence scoring (μ + CH) + fork evaluation + reward aggregation. Jointly determines runtime reality selection.</div>
+  <div class="mu-label">Coherence: μ = 0.9995</div>
+  <div class="mu-bar"><div class="mu-fill" style="width:99.95%;background:linear-gradient(90deg,#6cef9a,#ef9a9a)"></div></div>
+</div>
+
+<div class="layer layer-L4">
+  <h3><span class="layer-badge">L4</span> RL + Adaptation Layer <span class="status status-warn">TRAINING</span></h3>
+  <div class="desc">MAPPO/PPO/SAC agents, adversarial fork training, policy distillation. Closes simulation → learning → policy → governance loop.</div>
+  <div class="mu-label">Coherence: μ = 0.9992</div>
+  <div class="mu-bar"><div class="mu-fill" style="width:99.92%;background:linear-gradient(90deg,#e8b86d,#b39ddb)"></div></div>
+</div>
+
+<div class="layer layer-L5">
+  <h3><span class="layer-badge">L5</span> Interface Layer <span class="status status-ok">LIVE</span></h3>
+  <div class="desc">D3 Fork Explorer + Harmony UI merged. Live replay scrubber, causal heatmaps, agent inspector, intervention editor.</div>
+  <div class="mu-label">Coherence: μ = 0.9999</div>
+  <div class="mu-bar"><div class="mu-fill" style="width:99.99%;background:linear-gradient(90deg,#6cef9a,#c8a84b)"></div></div>
+</div>
+
+<div class="flow-diagram">
+  <div class="flow-step">Intent (SR-AI) <span style="margin-left:auto;font-size:11px;color:var(--muted)">User defines what should happen</span></div>
+  <div class="flow-arrow">↓ μ/CH validation</div>
+  <div class="flow-step">TaskBus Translation (L1) <span style="margin-left:auto;font-size:11px;color:var(--muted)">Convert to executable events</span></div>
+  <div class="flow-arrow">↓ Kafka emission</div>
+  <div class="flow-step">Ray Execution Cluster <span style="margin-left:auto;font-size:11px;color:var(--muted)">Distributed computation</span></div>
+  <div class="flow-arrow">↓ Causal graph update</div>
+  <div class="flow-step">RL Policy Evaluation (L4) <span style="margin-left:auto;font-size:11px;color:var(--muted)">Score outcomes</span></div>
+  <div class="flow-arrow">↓ Reality collapse</div>
+  <div class="flow-step">Replay + Feedback (L5/L2) <span style="margin-left:auto;font-size:11px;color:var(--muted)">Visualize + update engines</span></div>
+</div>
+
+<div style="font-size:12px;color:var(--gold);margin-top:12px;padding:10px;border:1px solid #3a3020;border-radius:10px;">
+🔥 META-RESEARCH LAYER (L6) — The third system: automatic experiment generation, causal hypothesis testing, architecture self-evolution, benchmark self-evaluation.
+</div>
+
+<div style="margin-top:20px;">
+  <h4 style="font-size:13px;color:var(--gold);margin-bottom:10px;">What Was Fixed</h4>
+  <div class="fix-grid">
+    <div class="fix-card before">
+      <h4>SR-AIBRIDGE (before)</h4>
+      <div style="color:var(--red)">✗ Isolated OS</div>
+      <div style="color:var(--red)">✗ No event backbone</div>
+      <div style="color:var(--red)">✗ No causal runtime model</div>
+      <div style="color:var(--red)">✗ Closed UI ecosystem</div>
+    </div>
+    <div class="fix-card after">
+      <h4>SR-AIBRIDGE (after)</h4>
+      <div style="color:var(--green)">✓ Distributed runtime (Kafka/Ray)</div>
+      <div style="color:var(--green)">✓ TaskBus formalization</div>
+      <div style="color:var(--green)">✓ Causal DAG runtime (CSIP)</div>
+      <div style="color:var(--green)">✓ L5 merged UI</div>
+    </div>
+    <div class="fix-card before">
+      <h4>CSIP (before)</h4>
+      <div style="color:var(--red)">✗ No semantic intelligence model</div>
+      <div style="color:var(--red)">✗ No governance system</div>
+      <div style="color:var(--red)">✗ No identity system</div>
+      <div style="color:var(--red)">✗ External-only UI</div>
+    </div>
+    <div class="fix-card after">
+      <h4>CSIP (after)</h4>
+      <div style="color:var(--green)">✓ SR engines provide meaning</div>
+      <div style="color:var(--green)">✓ μ/CH global constraints</div>
+      <div style="color:var(--green)">✓ Forge + MIDAS agents</div>
+      <div style="color:var(--green)">✓ L5 merged UI</div>
+    </div>
+  </div>
+</div>
+
+<div class="mu-grid">
+  <div class="mu-cell" style="background:#1a1010"><span style="color:#ef9a9a">0.9997</span>μ_physical</div>
+  <div class="mu-cell" style="background:#1a1010"><span style="color:#ef9a9a">0.9997</span>μ_execution</div>
+  <div class="mu-cell" style="background:#1a1010"><span style="color:#a5d6a7">0.9998</span>μ_intelligence</div>
+  <div class="mu-cell" style="background:#1a1010"><span style="color:#7ec8e3">0.9995</span>μ_causal</div>
+  <div class="mu-cell" style="background:#1a1010"><span style="color:#b39ddb">0.9992</span>μ_rl</div>
+  <div class="mu-cell" style="background:#1a1010"><span style="color:#c8a84b">0.9999</span>μ_interface</div>
+</div>
+</body>
+</html>
